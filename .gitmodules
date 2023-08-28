@@ -1,0 +1,3 @@
+[submodule "private"]
+	path = private
+	url = git@github.com:LazyRichard/coding-test-java-private.git
