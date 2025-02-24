@@ -16,10 +16,14 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
 }
 
-rootProject.name = "coding-review"
+rootProject.name = "coding-interview"
 
-includeBuild("fixture")
+includeBuild("extension")
 
-if (rootDir.resolve("private/build.gradle.kts").exists()) {
+include("acmicpc")
+include("algorithm")
+include("leetcode")
+
+if (rootDir.resolve("private/settings.gradle.kts").exists()) {
     includeBuild("private")
 }

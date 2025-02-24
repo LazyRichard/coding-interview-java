@@ -22,4 +22,10 @@ dependencies {
     implementation(libs.gradle.test.logger)
 
     implementation(libs.gradle.spotless)
+
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10")
+    implementation("org.jetbrains.kotlin:kotlin-allopen:2.1.10")
+    implementation("org.jetbrains.kotlin:kotlin-noarg:2.1.10")
+
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.3")
 }
