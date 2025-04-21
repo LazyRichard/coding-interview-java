@@ -2,7 +2,7 @@ package me.jmlab.coding.interview.leetcode.leet3;
 
 import java.util.HashSet;
 
-public final class Solution {
+class Solution {
 
     public int lengthOfLongestSubstring(String s) {
 

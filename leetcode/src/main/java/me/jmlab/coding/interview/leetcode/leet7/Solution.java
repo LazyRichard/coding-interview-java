@@ -1,6 +1,6 @@
 package me.jmlab.coding.interview.leetcode.leet7;
 
-public class Solution {
+class Solution {
 
     public int reverse(int x) {
         long rev = 0;

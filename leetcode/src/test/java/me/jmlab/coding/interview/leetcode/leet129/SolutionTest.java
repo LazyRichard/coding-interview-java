@@ -26,17 +26,6 @@ public class SolutionTest {
                                 .right(0)
                                 .build(),
                         5447));
-        /*
-        return Stream.of(
-                Arguments.of(new TreeNode(4, new TreeNode(9, new TreeNode(5), new TreeNode(1)), new TreeNode(0)), 1026),
-                Arguments.of(
-                        new TreeNode(
-                                4,
-                                new TreeNode(9, new TreeNode(5), new TreeNode(1, null, new TreeNode(2))),
-                                new TreeNode(0)),
-                        5447));
-
-         */
     }
 
     private static final Solution solution = new Solution();

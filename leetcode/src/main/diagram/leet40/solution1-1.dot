@@ -1,0 +1,30 @@
+digraph G {
+
+    n [label="[]"];
+
+    na [label="[1]"];
+    nb [label="[2]"];
+    nc [label="[2]"];
+    nd [label="[2]"];
+    ne [label="[5]"];
+
+    n -> na;
+    n -> nb;
+    n -> nc;
+    n -> nd;
+    n -> ne;
+
+    naa [label="[1,2]"];
+    nba [label="[1,2]"];
+    nca [label="[1,2]"];
+    nda [label="[1,5]"];
+
+    na -> naa;
+
+    nb -> nba;
+
+    nc -> nca;
+
+    nd -> nda;
+}
+

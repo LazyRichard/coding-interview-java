@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Stack;
 import me.jmlab.coding.interview.leetcode.common.TreeNode;
 
-public class Solution {
+class Solution {
 
     public List<Integer> postOrderTraversal(TreeNode root) {
         if (root == null) return Collections.emptyList();

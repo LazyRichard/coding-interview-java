@@ -13,15 +13,15 @@ pluginManagement {
 
 plugins {
     // Apply the foojay-resolver plugin to allow automatic download of JDKs
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.4.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.10.0"
 }
 
 rootProject.name = "coding-interview"
 
 includeBuild("extension")
 
-include("acmicpc")
-include("algorithm")
+include("html")
+include("codility")
 include("leetcode")
 
 if (rootDir.resolve("private/settings.gradle.kts").exists()) {

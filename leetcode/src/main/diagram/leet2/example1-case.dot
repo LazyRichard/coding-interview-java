@@ -1,0 +1,15 @@
+digraph G {
+    rankdir=LR;
+    node [shape=circle];
+
+    na2 [label="2"];
+    na4 [label="4"];
+    na3 [label="3"];
+
+    nb5 [label="5"];
+    nb6 [label="6"];
+    nb4 [label="4"];
+
+    na2 -> na4 -> na3;
+    nb5 -> nb6 -> nb4;
+}

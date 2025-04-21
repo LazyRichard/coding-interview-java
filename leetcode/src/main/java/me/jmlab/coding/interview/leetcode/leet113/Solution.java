@@ -1,29 +1,29 @@
 package me.jmlab.coding.interview.leetcode.leet113;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import me.jmlab.coding.interview.leetcode.common.TreeNode;
 
-public class Solution {
+class Solution {
 
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        var result = new ArrayList<List<Integer>>();
-
-        traverse(root, targetSum, new ArrayList<>(), result);
-
-        return result;
+        return dfs(root, targetSum, new ArrayList<>());
     }
 
-    private void traverse(TreeNode node, int target, List<Integer> path, List<List<Integer>> result) {
-        if (node == null) return;
+    private List<List<Integer>> dfs(TreeNode head, int targetSum, List<Integer> path) {
+        if (head == null) return Collections.emptyList();
 
-        path.add(node.val);
+        path.add(head.val);
+        List<List<Integer>> result = new ArrayList<>();
+        if (head.left == null && head.right == null && targetSum == head.val) {
+            result.add(new ArrayList<>(path));
+        } else {
+            result.addAll(dfs(head.left, targetSum - head.val, path));
+            result.addAll(dfs(head.right, targetSum - head.val, path));
+        }
+        path.removeLast();
 
-        if (node.left == null && node.right == null && node.val == target) result.add(new ArrayList<>(path));
-
-        traverse(node.left, target - node.val, path, result);
-        traverse(node.right, target - node.val, path, result);
-
-        path.remove(path.size() - 1);
+        return result;
     }
 }

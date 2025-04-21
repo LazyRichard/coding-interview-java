@@ -2,7 +2,7 @@ package me.jmlab.coding.interview.leetcode.common;
 
 import java.util.Objects;
 
-public class TreeNode {
+public final class TreeNode {
     public int val;
 
     public TreeNode left;

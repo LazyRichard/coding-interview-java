@@ -12,16 +12,18 @@ import org.junit.jupiter.params.provider.MethodSource;
 public class SolutionTest {
 
     public static Stream<Arguments> methodSource() {
-        return Stream.of(Arguments.of(
-                TreeNode.builder(5)
-                        .left(TreeNode.builder(4)
-                                .left(TreeNode.builder(11).left(7).right(2)))
-                        .right(TreeNode.builder(8)
-                                .left(13)
-                                .right(TreeNode.builder(4).left(5).right(1)))
-                        .build(),
-                22,
-                List.of(List.of(5, 4, 11, 2), List.of(5, 8, 4, 5))));
+        return Stream.of(
+                Arguments.of(
+                        TreeNode.builder(5)
+                                .left(TreeNode.builder(4)
+                                        .left(TreeNode.builder(11).left(7).right(2)))
+                                .right(TreeNode.builder(8)
+                                        .left(13)
+                                        .right(TreeNode.builder(4).left(5).right(1)))
+                                .build(),
+                        22,
+                        List.of(List.of(5, 4, 11, 2), List.of(5, 8, 4, 5))),
+                Arguments.of(TreeNode.builder(-2).right(-3).build(), -5, List.of(List.of(-2, -3))));
     }
 
     private static final Solution solution = new Solution();

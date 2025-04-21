@@ -3,7 +3,7 @@ package me.jmlab.coding.interview.leetcode.leet8;
 import java.math.BigInteger;
 import java.util.regex.Pattern;
 
-public class Solution {
+class Solution {
 
     private static final Pattern PATTERN = Pattern.compile("^[+-]?\\d+");
 

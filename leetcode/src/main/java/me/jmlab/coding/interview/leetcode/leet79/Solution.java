@@ -1,41 +1,90 @@
 package me.jmlab.coding.interview.leetcode.leet79;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
-public class Solution {
+class Solution {
+
+    private static final class Position {
+        public final int y;
+
+        public final int x;
+
+        private transient Integer hash;
+
+        public Position(int y, int x) {
+            this.y = y;
+            this.x = x;
+        }
+
+        public Position left() {
+            return new Position(y, x - 1);
+        }
+
+        public Position right() {
+            return new Position(y, x + 1);
+        }
+
+        public Position up() {
+            return new Position(y - 1, x);
+        }
+
+        public Position down() {
+            return new Position(y + 1, x);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (!(o instanceof Position position)) return false;
+            return y == position.y && x == position.x;
+        }
+
+        @Override
+        public int hashCode() {
+            if (hash != null) return hash;
+
+            hash = Objects.hash(y, x);
+            return hash;
+        }
+
+        @Override
+        public String toString() {
+            return "Position{" + "y=" + y + ", x=" + x + '}';
+        }
+    }
+
     public boolean exist(char[][] board, String word) {
+        for (int y = 0; y < board.length; y++) {
+            char[] row = board[y];
+            for (int x = 0; x < row.length; x++) {
+                boolean find = dfs(board, word, 0, new Position(y, x), new HashSet<>());
 
-        var visited = new boolean[board.length][board[0].length];
-
-        int rows = board.length;
-        int cols = board[0].length;
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (dfs(board, visited, word, i, j, 0)) return true;
+                if (find) return true;
             }
         }
 
         return false;
     }
 
-    private boolean dfs(char[][] board, boolean[][] visited, String word, int r, int c, int index) {
-        if (index == word.length()) return true;
+    private boolean dfs(char[][] board, String target, int depth, Position position, Set<Position> visited) {
+        if (!inBound(board, position) || visited.contains(position)) return false;
 
-        if (Arrays.asList(
-                        r < 0,
-                        r >= board.length,
-                        c < 0,
-                        c >= board[0].length,
-                        visited[r][c],
-                        board[r][c] != word.charAt(index))
-                .contains(true)) return false;
+        char ch = board[position.y][position.x];
+        if (ch != target.charAt(depth)) return false;
+        if (depth == target.length() - 1) return true;
 
-        visited[r][c] = true;
+        visited.add(position);
+        boolean result = dfs(board, target, depth + 1, position.left(), visited)
+                || dfs(board, target, depth + 1, position.right(), visited)
+                || dfs(board, target, depth + 1, position.up(), visited)
+                || dfs(board, target, depth + 1, position.down(), visited);
+        visited.remove(position);
 
-        boolean found =
-                dfs(board, visited, word, r + 1, c, index + 1) || dfs(board, visited, word, r - 1, c, index + 1);
+        return result;
+    }
 
-        return true;
+    private boolean inBound(char[][] board, Position position) {
+        return position.y < board.length && position.y >= 0 && position.x >= 0 && position.x < board[0].length;
     }
 }
