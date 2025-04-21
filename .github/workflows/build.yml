@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '21'
 
       - name: Export KROKI_URL env
         run: echo "ORG_GRADLE_PROJECT_KROKI_URL=http://localhost:8080" >> $GITHUB_ENV
