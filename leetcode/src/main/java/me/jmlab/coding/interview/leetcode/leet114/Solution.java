@@ -2,7 +2,7 @@ package me.jmlab.coding.interview.leetcode.leet114;
 
 import me.jmlab.coding.interview.leetcode.common.TreeNode;
 
-public class Solution {
+class Solution {
 
     public void flatten(TreeNode node) {
         if (node == null) return;

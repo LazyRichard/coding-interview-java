@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,7 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 @Disabled
 class SolutionTest {
 
-    public static Stream<Arguments> methodSource() {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         new int[] {1, 2, 3},
@@ -35,7 +34,7 @@ class SolutionTest {
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(int[] nums, List<List<Integer>> expected) {
+    void test(int[] nums, List<List<Integer>> expected) {
         var actual = solution.subsets(nums);
 
         for (var list : expected) {

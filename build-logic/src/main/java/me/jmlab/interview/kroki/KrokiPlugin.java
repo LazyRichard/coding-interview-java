@@ -66,7 +66,7 @@ public final class KrokiPlugin implements Plugin<Project> {
 
         diagramConfigurations.create("diagramsnet", diagram -> {
             diagram.getEnabled().convention(true);
-            diagram.getExtensionMappings().convention(List.of(".diagrams"));
+            diagram.getExtensionMappings().convention(List.of(".drawio"));
         });
 
         project.getTasks().register("krokiBuild", KrokiTask.class, task -> {

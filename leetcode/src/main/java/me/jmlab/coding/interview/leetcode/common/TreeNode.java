@@ -52,7 +52,7 @@ public final class TreeNode {
 
     public static final class TreeNodeBuilder {
 
-        private int val;
+        private final int val;
 
         private TreeNode left;
 

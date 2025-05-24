@@ -7,8 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class SolutionTest {
-    public static Stream<Arguments> methodSource() {
+class SolutionTest {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         new char[][] {
@@ -55,11 +55,11 @@ public class SolutionTest {
                         true));
     }
 
-    private static final Solution solution = new Solution();
+    static final Solution solution = new Solution();
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(char[][] board, String word, boolean expected) {
+    void test(char[][] board, String word, boolean expected) {
         var actual = solution.exist(board, word);
 
         assertEquals(expected, actual);

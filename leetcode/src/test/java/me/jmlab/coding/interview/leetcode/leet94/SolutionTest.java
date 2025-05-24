@@ -11,9 +11,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class SolutionTest {
+class SolutionTest {
 
-    public static Stream<Arguments> methodSource() {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         TreeNode.builder(1).right(TreeNode.builder(2).left(3)).build(), List.of(1, 3, 2)),
@@ -33,13 +33,13 @@ public class SolutionTest {
     private Solution solution;
 
     @BeforeEach
-    public void beforeEach() {
+    void beforeEach() {
         solution = new Solution();
     }
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(TreeNode root, List<Integer> expected) {
+    void test(TreeNode root, List<Integer> expected) {
         var actual = solution.inorderTraversal(root);
 
         assertEquals(expected, actual);

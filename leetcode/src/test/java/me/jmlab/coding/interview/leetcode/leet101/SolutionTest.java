@@ -9,9 +9,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class SolutionTest {
+class SolutionTest {
 
-    public static Stream<Arguments> methodSource() {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         TreeNode.builder(1)
@@ -32,13 +32,13 @@ public class SolutionTest {
     private Solution solution;
 
     @BeforeEach
-    public void beforeEach() {
+    void beforeEach() {
         solution = new Solution();
     }
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(TreeNode root, boolean expected) {
+    void test(TreeNode root, boolean expected) {
         var actual = solution.isSymmetric(root);
 
         assertEquals(expected, actual);

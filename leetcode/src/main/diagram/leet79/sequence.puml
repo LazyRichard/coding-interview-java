@@ -1,0 +1,37 @@
+@startuml
+start
+:exist(board, word);
+repeat
+  :board의 모든 좌표(y, x) 탐색;
+  if (dfs(board, word, 0, Position(y, x), visited)) then (true)
+    :return true;
+    stop
+  endif
+repeat while (탐색 완료)
+:return false;
+stop
+
+start
+:dfs(board, word, depth, position, visited);
+if (out of bounds or visited.contains(position)) then (true)
+  :return false;
+  stop
+endif
+
+if (board[position] != word[depth]) then (true)
+  :return false;
+  stop
+endif
+
+if (depth == word.length - 1) then (true)
+  :return true;
+  stop
+endif
+
+:visited.add(position);
+:result = dfs(left) || dfs(right) || dfs(up) || dfs(down);
+:visited.remove(position);
+:return result;
+stop
+
+@enduml

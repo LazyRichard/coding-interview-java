@@ -9,9 +9,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class SolutionTest {
+class SolutionTest {
 
-    public static Stream<Arguments> methodSource() {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         TreeNode.builder(1).left(2).right(3).build(),
@@ -27,16 +27,16 @@ public class SolutionTest {
                         false));
     }
 
-    private Solution solution;
+    Solution solution;
 
     @BeforeEach
-    public void beforeEach() {
+    void beforeEach() {
         solution = new Solution();
     }
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(TreeNode a, TreeNode b, boolean expected) {
+    void test(TreeNode a, TreeNode b, boolean expected) {
         var actual = solution.isSameTree(a, b);
 
         assertEquals(expected, actual);

@@ -1,5 +1,10 @@
 package me.jmlab.coding.interview.leetcode.leet7;
 
+/**
+ * <h2>풀이</h2>
+ *
+ * <p>
+ */
 class Solution {
 
     public int reverse(int x) {

@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class SolutionTest {
 
-    public static Stream<Arguments> methodSource() {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         new char[][] {
@@ -40,11 +40,11 @@ class SolutionTest {
                         }));
     }
 
-    private final Solution solution = new Solution();
+    final Solution solution = new Solution();
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(char[][] board, char[][] expected) {
+    void test(char[][] board, char[][] expected) {
         solution.solve(board);
 
         for (int y = 0; y < board.length; y++) {

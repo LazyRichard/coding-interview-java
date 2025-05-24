@@ -8,8 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class SolutionTest {
-    public static Stream<Arguments> methodSource() {
+class SolutionTest {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         new int[] {1, 2, 3},
@@ -24,11 +24,11 @@ public class SolutionTest {
                 Arguments.of(new int[] {1}, List.of(List.of(1))));
     }
 
-    private static final Solution solution = new Solution();
+    static final Solution solution = new Solution();
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(int[] input, List<List<Integer>> expected) {
+    void test(int[] input, List<List<Integer>> expected) {
         var actual = solution.permute(input);
 
         assertEquals(expected, actual);

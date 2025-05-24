@@ -2,7 +2,14 @@ package me.jmlab.coding.interview.leetcode.leet101;
 
 import me.jmlab.coding.interview.leetcode.common.TreeNode;
 
-public class Solution {
+/**
+ * <h2>풀이</h2>
+ *
+ * <p>이 문제도 재귀 호출로 해결할 수 있다. 다만, 판단해야 하는 조건이 조금 더 많아졌을 뿐</p>
+ *
+ * <p></p>
+ */
+class Solution {
 
     public boolean isSymmetric(TreeNode root) {
         if (root == null) return false;

@@ -8,9 +8,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class SolutionTest {
+class SolutionTest {
 
-    public static Stream<Arguments> methodSource() {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         TreeNode.builder(3)
@@ -21,11 +21,11 @@ public class SolutionTest {
                 Arguments.of(TreeNode.builder(1).right(TreeNode.leaf(2)).build(), 2));
     }
 
-    private static final Solution solution = new Solution();
+    static final Solution solution = new Solution();
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(TreeNode root, int expected) {
+    void test(TreeNode root, int expected) {
         var actual = solution.maxDepth(root);
 
         assertEquals(expected, actual);

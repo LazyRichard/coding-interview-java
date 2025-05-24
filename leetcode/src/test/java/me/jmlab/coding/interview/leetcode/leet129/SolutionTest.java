@@ -8,9 +8,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class SolutionTest {
+class SolutionTest {
 
-    public static final Stream<Arguments> methodSource() {
+    static Stream<Arguments> methodSource() {
         return Stream.of(
                 Arguments.of(
                         TreeNode.builder(4)
@@ -28,11 +28,11 @@ public class SolutionTest {
                         5447));
     }
 
-    private static final Solution solution = new Solution();
+    static final Solution solution = new Solution();
 
     @ParameterizedTest
     @MethodSource("methodSource")
-    public void test(TreeNode root, int expected) {
+    void test(TreeNode root, int expected) {
 
         var actual = solution.sumNumbers(root);
 

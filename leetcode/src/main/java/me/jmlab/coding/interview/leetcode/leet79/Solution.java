@@ -4,6 +4,11 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * <h2>풀이</h2>
+ *
+ *
+ */
 class Solution {
 
     private static final class Position {
@@ -36,6 +41,7 @@ class Solution {
 
         @Override
         public boolean equals(Object o) {
+            if (o == null) return false;
             if (!(o instanceof Position position)) return false;
             return y == position.y && x == position.x;
         }
