@@ -23,28 +23,6 @@
  *     <li>{@code 1 <= target <= 30}</li>
  * </ul>
  *
- * <h3>Solution</h3>
- *
- * <p>아래 케이스를 기준으로 진행한다.</p>
- *
- * <pre>
- *   <strong>Input:</strong> candidates = [2,5,2,1,2], target = 5
- *   <strong>Output:</strong>
- *     [
- *       [1,2,2],
- *       [5]
- *     ]
- * </pre>
- *
- * <p><strong>첫 번째로 중복 제거를 쉽게 하기 위해 정렬을 한다.</strong></p>
- *
- * <ul>
- *     <li>{@code [1, 2, 2, 2, 5]}</li>
- * </ul>
- *
- * <img src="{@docRoot}/resources/leet40/solution1-1.svg" alt="solution1-1"/>
- *
- *
  * @see <a href="https://leetcode.com/problems/combination-sum-ii">40. Combination Sum Ⅱ</a>
  */
 package me.jmlab.coding.interview.leetcode.leet40;

@@ -1,6 +1,5 @@
 package me.jmlab.coding.interview.leetcode.leet100;
 
-import java.util.Objects;
 import me.jmlab.coding.interview.leetcode.common.TreeNode;
 
 /**

@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <h2>78. Subsets</h2>
- * <p>Given an integer array {@code nums} of <strong>unique</strong> elements, return all possible subsets</p>
- * <p>The solution set must not contain duplicate subsets. Return the solution in any order</p>
+ * <h2>풀이</h2>
  *
- * <p>Solution</p>
- * <p>이 문제는 DFS를 사용해 모든 가능한 부분 집합을 생선한다.</p>
+ * <p>이 문제는 DFS를 사용해 모든 가능한 부분 집합을 계산한다.</p>
  * <ol>
  *     <li>모든 부분 집합을 저장할 리스트를 생성한다</li>
  *     <li>현재 부분 집합을 저장할 리스트를 생성한다</li>
@@ -18,10 +15,6 @@ import java.util.List;
  *     <li>재귀 호출이 끝난 후에는 마지막에 추가한 숫자를 제거하여 상태를 복원한다.</li>
  * </ol>
  *
- * <p>아래는 DFS 탐색 과정을 Graphviz로 표현한 예시이다.</p>
- * <img src="{@docRoot}/resources/leet78/graphviz.svg" alt="dfs" />
- *
- * @see <a href="https://leetcode.com/problems/subsets/">LeetCode 78. Subsets</a>
  */
 class Solution {
 

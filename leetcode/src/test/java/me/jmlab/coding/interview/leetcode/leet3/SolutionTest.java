@@ -11,10 +11,7 @@ class SolutionTest {
 
     static Stream<Arguments> methodSource() {
         return Stream.of(
-            Arguments.of("abcabcbb", 3),
-            Arguments.of("bbbbb", 1),
-            Arguments.of("pwwkew", 3),
-            Arguments.of(" ", 1));
+                Arguments.of("abcabcbb", 3), Arguments.of("bbbbb", 1), Arguments.of("pwwkew", 3), Arguments.of(" ", 1));
     }
 
     static final Solution solution = new Solution();

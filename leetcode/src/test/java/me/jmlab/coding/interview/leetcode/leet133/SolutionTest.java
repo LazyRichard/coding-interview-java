@@ -1,26 +1,21 @@
 package me.jmlab.coding.interview.leetcode.leet133;
 
-import me.jmlab.coding.interview.leetcode.common.Node;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import me.jmlab.coding.interview.leetcode.common.Node;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class SolutionTest {
 
     static Stream<Arguments> methodSource() {
 
-        return Stream.of(
-            Arguments.of(
-                convert(List.of(List.of(2, 4), List.of(1, 3), List.of(2, 4), List.of(1, 3)))
-            )
-        );
+        return Stream.of(Arguments.of(convert(List.of(List.of(2, 4), List.of(1, 3), List.of(2, 4), List.of(1, 3)))));
     }
 
     private static final Solution solution = new Solution();
@@ -42,7 +37,7 @@ class SolutionTest {
 
             List<Integer> definition = definitions.get(i);
 
-            for (int d: definition) {
+            for (int d : definition) {
                 Node link = map.getOrDefault(d, new Node(d));
                 map.put(d, link);
 

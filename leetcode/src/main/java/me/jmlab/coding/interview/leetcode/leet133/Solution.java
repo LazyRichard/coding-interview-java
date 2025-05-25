@@ -1,10 +1,9 @@
 package me.jmlab.coding.interview.leetcode.leet133;
 
-import me.jmlab.coding.interview.leetcode.common.Node;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
+import me.jmlab.coding.interview.leetcode.common.Node;
 
 class Solution {
 
