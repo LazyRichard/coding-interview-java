@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "coding-test-java-build-logic"
+
+includeBuild("../gradle-kroki")

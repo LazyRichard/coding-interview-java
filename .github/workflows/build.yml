@@ -10,19 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      kroki:
-        image: yuzutech/kroki
-        env:
-          KROKI_DIAGRAMSNET_HOST: diagramsnet
-        ports:
-          - 8000:8000
-
-      diagramsnet:
-        image: yuzutech/kroki-diagramsnet:latest
-        ports:
-          - 8005:8005
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,10 +20,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Export KROKI_URL env
-        run: echo "ORG_GRADLE_PROJECT_KROKI_URL=http://localhost:8080" >> $GITHUB_ENV
-
       - name: Generate document
+        env:
+            ORG_GRADLE_PROJECT_KROKI_AUTH: ${{ secrets.kroki_auth }}
         run: ./gradlew :html:buildDocument
 
       - name: Upload static files as artifact

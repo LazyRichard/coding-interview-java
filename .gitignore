@@ -7,3 +7,5 @@ bin/
 
 .vscode/*
 !.vscode/extensions.json
+
+/gradle-*.properties

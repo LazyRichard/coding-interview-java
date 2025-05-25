@@ -1,6 +1,8 @@
-package me.jmlab.interview.kroki;
+package me.jmlab.gradle.kroki;
 
 import org.gradle.api.GradleException;
+import org.gradle.api.logging.Logger;
+import org.gradle.api.logging.Logging;
 import org.gradle.workers.WorkAction;
 
 import javax.inject.Inject;
@@ -18,9 +20,13 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Map;
 
 public abstract class KrokiWorkAction implements WorkAction<KrokiWorkParameter> {
+
+    private static final Logger logger = Logging.getLogger(KrokiWorkAction.class);
 
     private final HttpClient client;
 
@@ -39,12 +45,18 @@ public abstract class KrokiWorkAction implements WorkAction<KrokiWorkParameter> 
                 .get()
                 .resolve("/" + getParameters().getDiagram().get() + "/"
                         + getParameters().getFormat().get());
+        logger.debug("kroki URI: {}", uri);
 
         HttpRequest request;
         try {
             var builder = HttpRequest.newBuilder(uri)
                     .POST(HttpRequest.BodyPublishers.ofByteArray(Files.readAllBytes(
                             getParameters().getInput().get().getAsFile().toPath())));
+
+            for (Map.Entry<String, String> entry : getParameters().getHeaders().get().entrySet()) {
+                logger.debug("kroki header: {}:{}", entry.getKey(), entry.getValue());
+                builder.header(entry.getKey(), entry.getValue());
+            }
 
             request = builder.build();
         } catch (FileNotFoundException e) {
@@ -66,7 +78,7 @@ public abstract class KrokiWorkAction implements WorkAction<KrokiWorkParameter> 
             throw new GradleException("interrupted while sending request", e);
         }
 
-        if (response.statusCode() >= 400 && response.statusCode() < 500) {
+        if (response.statusCode() >= 400) {
             StringBuilder sb = new StringBuilder();
             sb.append("failed to build diagram ");
             sb.append(getParameters().getInput().getAsFile().get().getName());
@@ -76,7 +88,8 @@ public abstract class KrokiWorkAction implements WorkAction<KrokiWorkParameter> 
                 String line;
 
                 while ((line = reader.readLine()) != null) {
-                    sb.append(line + System.lineSeparator());
+                    sb.append(line);
+                    sb.append(System.lineSeparator());
                 }
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
@@ -84,13 +97,10 @@ public abstract class KrokiWorkAction implements WorkAction<KrokiWorkParameter> 
 
             throw new GradleException(sb.toString());
         }
-        if (response.statusCode() >= 500) {
-            throw new RuntimeException("failed");
-        }
 
         File output = getParameters().getOutput().getAsFile().get();
 
-        output.getParentFile().mkdirs();
+        boolean ignored = output.getParentFile().mkdirs();
         try (OutputStream os = new FileOutputStream(output);
                 InputStream is = response.body()) {
             is.transferTo(os);

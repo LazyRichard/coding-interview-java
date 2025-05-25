@@ -7,8 +7,6 @@
 plugins {
     // Support convention plugins written in Kotlin. Convention plugins are build scripts in 'src/main' that automatically become available as plugins in the main build.
     `kotlin-dsl`
-
-    `java-gradle-plugin`
 }
 
 repositories {
@@ -17,8 +15,6 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.jspecify:jspecify:1.0.0")
-
     // Workaround for version catalogs accessible from precompiled script
     // See https://github.com/gradle/gradle/issues/15383
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
@@ -32,13 +28,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-noarg:2.1.10")
 
     implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.3")
-}
 
-gradlePlugin {
-    plugins {
-        register("kroki") {
-            id = "me.jmlab.interview.gradle-kroki"
-            implementationClass = "me.jmlab.interview.kroki.KrokiPlugin"
-        }
-    }
+    implementation("me.jmlab.gradle:gradle-kroki")
 }

@@ -1,4 +1,4 @@
-package me.jmlab.interview.kroki;
+package me.jmlab.gradle.kroki;
 
 import java.net.URI;
 import java.util.List;
@@ -12,6 +12,8 @@ public final class KrokiPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
         var extension = project.getExtensions().create("kroki", KrokiExtension.class);
+
+        extension.getUri().convention(URI.create("https://kroki.io"));
 
         var diagramConfigurations = extension.getDiagramConfigurations();
         diagramConfigurations.create("bpmn", diagram -> {
@@ -70,14 +72,7 @@ public final class KrokiPlugin implements Plugin<Project> {
         });
 
         project.getTasks().register("krokiBuild", KrokiTask.class, task -> {
-
-            URI uri;
-            Map<String, ?> properties = project.getProperties();
-            if (properties.containsKey("KROKI_HOME"))
-                uri = URI.create((String) properties.get("KROKI_HOME"));
-            else uri = URI.create("https://kroki.io");
-
-            task.getUri().set(extension.getUri().convention(uri));
+            task.getUri().set(extension.getUri());
             task.getHeaders().set(extension.getHeaders());
             task.getOutputDirectory()
                     .set(project.getLayout().getBuildDirectory().dir("diagram"));

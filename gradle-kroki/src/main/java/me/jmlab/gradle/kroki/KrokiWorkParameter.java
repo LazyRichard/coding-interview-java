@@ -1,4 +1,4 @@
-package me.jmlab.interview.kroki;
+package me.jmlab.gradle.kroki;
 
 import java.net.URI;
 import org.gradle.api.file.RegularFileProperty;

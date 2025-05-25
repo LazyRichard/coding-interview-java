@@ -1,4 +1,4 @@
-package me.jmlab.interview.kroki;
+package me.jmlab.gradle.kroki;
 
 import org.gradle.api.NamedDomainObjectContainer;
 import org.gradle.api.provider.MapProperty;

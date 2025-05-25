@@ -3,7 +3,7 @@ import java.net.URI
 plugins {
     id("me.jmlab.interview.java-stream-test-conventions")
 
-    id("me.jmlab.interview.gradle-kroki")
+    id("me.jmlab.interview.kroki-conventions")
 }
 
 val docHtml by configurations.registering {
