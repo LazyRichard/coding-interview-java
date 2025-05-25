@@ -19,8 +19,6 @@ dependencies {
     // See https://github.com/gradle/gradle/issues/15383
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 
-    implementation(libs.gradle.test.logger)
-
     implementation(libs.gradle.spotless)
 
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.10")
