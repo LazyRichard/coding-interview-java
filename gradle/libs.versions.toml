@@ -6,7 +6,7 @@ junit = "5.10.0"
 
 # Plugins
 gradle-test-logger = { module = "com.adarshr:gradle-test-logger-plugin", version = "4.0.0" }
-gradle-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.2" }
+gradle-spotless = { module = "com.diffplug.spotless:spotless-plugin-gradle", version = "7.0.3" }
 
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
