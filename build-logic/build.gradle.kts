@@ -27,7 +27,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-allopen:2.1.10")
     implementation("org.jetbrains.kotlin:kotlin-noarg:2.1.10")
 
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.4.3")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.5.0")
 
     implementation("me.jmlab.gradle:gradle-kroki")
 }
