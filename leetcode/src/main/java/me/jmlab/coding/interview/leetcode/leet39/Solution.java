@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * <h3>Solution</h3>
+ * <h2>Solution</h2>
  *
  * <p>아래 케이스를 기준으로 진행한다.</p>
  *
