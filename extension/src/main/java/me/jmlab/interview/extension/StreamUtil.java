@@ -1,5 +1,7 @@
 package me.jmlab.interview.extension;
 
+import org.jspecify.annotations.NonNull;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Objects;
@@ -8,9 +10,8 @@ import java.util.function.Consumer;
 
 public class StreamUtil {
 
-    public static String readLine(InputStream stream) {
-        Objects.requireNonNull(stream, "stream should not be a null");
-
+    @NonNull
+    public static String readLine(@NonNull InputStream stream) {
         try (var in = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
             try (var reader = new BufferedReader(in)) {
                 return reader.readLine();
@@ -20,7 +21,8 @@ public class StreamUtil {
         }
     }
 
-    public static String readText(InputStream stream) {
+    @NonNull
+    public static String readText(@NonNull InputStream stream) {
         Objects.requireNonNull(stream, "stream should not be a null");
 
         try (var in = stream; var out = new ByteArrayOutputStream(1024)) {
@@ -37,10 +39,7 @@ public class StreamUtil {
         }
     }
 
-    public static void readLines(InputStream stream, BiConsumer<String, Integer> processor) {
-        Objects.requireNonNull(stream, "stream should not be a null");
-        Objects.requireNonNull(processor, "processor should not be a null");
-
+    public static void readLines(@NonNull InputStream stream,@NonNull BiConsumer<@NonNull String, @NonNull Integer> processor) {
         try (var in = new InputStreamReader(stream)) {
             try (var reader = new BufferedReader(in)) {
                 String line;
@@ -56,13 +55,11 @@ public class StreamUtil {
         }
     }
 
-    public static void readLines(InputStream stream, Consumer<String> processor) {
-        Objects.requireNonNull(processor, "processor should not be a null");
-
+    public static void readLines(@NonNull InputStream stream, @NonNull Consumer<@NonNull String> processor) {
         readLines(stream, (line, count) -> processor.accept(line));
     }
 
-    public static void transferStream(InputStream input, OutputStream output) {
+    public static void transferStream(@NonNull InputStream input,@NonNull OutputStream output) {
         try (var writer = new PrintWriter(output)) {
             try (var in = new InputStreamReader(input)) {
                 try (var reader = new BufferedReader(in)) {
